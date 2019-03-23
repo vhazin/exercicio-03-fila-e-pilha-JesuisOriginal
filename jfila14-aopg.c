@@ -38,32 +38,32 @@ void increaseLine(LineUp *lineUp, unsigned int id) {
     Node *linedMan = (Node *)malloc(sizeof (Node));
     
     if (!linedMan) {
-        printf("Alocations failed, memory full\n");
+        // printf("Alocations failed, memory full\n");
         exit(-1);
     }
     linedMan->id = id;
     linedMan->next = NULL;
     if ((*lineUp).first == NULL) {
         // printf("m** de du** == NULL\n");
-        printf("added node with ID: %u\n", linedMan->id);
+        // printf("added node with ID: %u\n", linedMan->id);
         linedMan->prev = NULL;
         (*lineUp).first = linedMan;
-        printf("(*lineUp).first = %u\n", (*lineUp).first->id);
+        // printf("(*lineUp).first = %u\n", (*lineUp).first->id);
     } else {
         linedMan->prev = (*lineUp).last;
         (*lineUp).last->next = linedMan;
         
     }
     (*lineUp).last = linedMan;
-    printf("virou ao avesso viro gabiru\n");
+    // printf("virou ao avesso viro gabiru\n");
     // if ((*lineUp).first->next != (*lineUp).last)
     //     printf("(*lineUp).first->next->id == %u\n", (*lineUp).first->next->id);
     if ((*lineUp).first->next != NULL) {
         for (linedMan = (*lineUp).first; linedMan->next != NULL; linedMan = linedMan->next) {
-            printf("->next->id(%u)\n", linedMan->id);
+            // printf("->next->id(%u)\n", linedMan->id);
         }
     }
-    printf("(*lineUp).last = %u\n", (*lineUp).last->id);
+    // printf("(*lineUp).last = %u\n", (*lineUp).last->id);
     
     // printf("m** de duda\n");
     
@@ -75,33 +75,33 @@ void increaseLine(LineUp *lineUp, unsigned int id) {
 void giveUp(LineUp *lineUp, unsigned int id) {
 
     Node *chickened = (*lineUp).first;
-    printf("chicken->id ?= %u\n", id);
+    // printf("chicken->id ?= %u\n", id);
 
     for (; (*chickened).next != NULL || chickened == lineUp->last;) {
 
-        printf("chicken looped with id = %u\n", chickened->id);
-        printf("*chick id = %u \n chicken id = %u\n", (*chickened).id, chickened->id);
+        // printf("chicken looped with id = %u\n", chickened->id);
+        // printf("*chick id = %u \n chicken id = %u\n", (*chickened).id, chickened->id);
         if ((*chickened).id == id) {
-            printf("chicken found ");
+            // printf("chicken found ");
             Node *temp;
             if ((*chickened).next != NULL && chickened != lineUp->first && chickened != lineUp->last) {
-                printf("and there is a next\n");
-                printf("#1 chickened->next->id == %d \n", chickened->next->id);
-                printf("#2 chickened->prev->id == %d \n", chickened->prev->id);     
-                printf("#3 chickened->prev->next->id == %d \n", chickened->prev->next->id);
+                // printf("and there is a next\n");
+                // printf("#1 chickened->next->id == %d \n", chickened->next->id);
+                // printf("#2 chickened->prev->id == %d \n", chickened->prev->id);     
+                // printf("#3 chickened->prev->next->id == %d \n", chickened->prev->next->id);
                 if (chickened->prev) {
                     temp = chickened->prev;
                     temp->next = chickened->next;
                     chickened->next->prev = temp;
                     chickened->prev = temp;
-                    printf("free(chicken->id == %u) \n", (*chickened).id);
+                    // printf("free(chicken->id == %u) \n", (*chickened).id);
                     free(chickened);
                     break;
                 }
             }
             else if (chickened == lineUp->first)
             {
-                printf("pau no cu do first->id == %u\n", chickened->id);
+                // printf("pau no cu do first->id == %u\n", chickened->id);
                 temp = chickened;
                 chickened->next->prev = NULL;
                 // (*chickened->next).prev = NULL;
@@ -110,11 +110,11 @@ void giveUp(LineUp *lineUp, unsigned int id) {
                 // lineUp->first = temp->next;
                 break;
             }
-            printf("n foi o first\n");
-            printf("eh o last? = %u\n", chickened==lineUp->last);
+            // printf("n foi o first\n");
+            // printf("eh o last? = %u\n", chickened==lineUp->last);
             if (chickened == lineUp->last)
             {
-                printf("quem dorme no ponto...    last->id == %u\n", chickened->id);
+                // printf("quem dorme no ponto...    last->id == %u\n", chickened->id);
                 // temp = chickened;
                 chickened->prev->next = NULL;
                 // (*chickened->prev).next = NULL;
@@ -128,14 +128,14 @@ void giveUp(LineUp *lineUp, unsigned int id) {
             
         } else
         {
-            printf("chiken.id = %u not chicken \n", (*chickened).id);
+            // printf("chiken.id = %u not chicken \n", (*chickened).id);
             chickened = (*chickened).next;
-            printf("next chicken->id == %u\n", chickened->id);
+            // printf("next chicken->id == %u\n", chickened->id);
         }
 
         if (chickened == lineUp->last && id != lineUp->last->id)  {
 
-            printf("Error404: ID NOT FOUND\n");
+            // printf("Error404: ID NOT FOUND\n");
             exit(-1);
         }
         
@@ -174,7 +174,7 @@ int main()
     scanf("%u", &n);
     if (n > 50000 || n < 1) {
 
-        printf("Size_Error: too much/less linedMans\n");
+        // printf("Size_Error: too much/less linedMans\n");
         exit(-1);
     }
     // unsigned int *inp = (unsigned int*)calloc(n, sizeof(unsigned int));
@@ -190,7 +190,7 @@ int main()
     // inp = (unsigned int*)realloc(n, sizeof(unsigned int));
     if (m > 50000 || m < 1 || m > n) {
 
-        printf("Size_Error: too much/less chicken\n");
+        // printf("Size_Error: too much/less chicken\n");
     }
 
     for (unsigned int i = 0; i < m; i++) {
