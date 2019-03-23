@@ -160,7 +160,7 @@ void print(LineUp *lineUp)
         if ((!temp->next) && temp == lineUp->last)
             printf("%u", (*temp).id);
     }
-    printf("\n");
+    // printf("\n"); AKA: Frescura do spoj
 }
 
 
